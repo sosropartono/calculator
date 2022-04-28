@@ -40,8 +40,19 @@ function operate(operator, num1, num2){
 
 }
 
-const buttonSelector = document.querySelector('button');
-buttonSelector.addEventListener('click', (event) => {
-    const displayValue = document.createElement('p');
-    console.log('button clicked!');
-})
+function clear(){
+    numberSelector.innerHTML = '';
+}
+const buttonSelector = document.querySelectorAll('button.num');
+const clrButtonSelector = document.querySelector('.clr');
+const numberSelector = document.querySelector('p.input');
+
+
+clrButtonSelector.addEventListener('click', (event) => clear());
+
+
+
+buttonSelector.forEach(item => item.addEventListener('click', (event) => {
+    numberSelector.innerHTML += event.target.innerHTML;
+    console.log(event.target.innerHTML);
+}))
