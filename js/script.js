@@ -41,18 +41,37 @@ function operate(operator, num1, num2){
 }
 
 function clear(){
-    numberSelector.innerHTML = '';
+    displaySelector.innerHTML = '';
 }
-const buttonSelector = document.querySelectorAll('button.num');
-const clrButtonSelector = document.querySelector('.clr');
-const numberSelector = document.querySelector('p.input');
 
 
-clrButtonSelector.addEventListener('click', (event) => clear());
+const numSelector = document.querySelectorAll('.num');
+const opSelector = document.querySelectorAll('.op');
+const clrSelector = document.querySelector('.clr');
+const displaySelector = document.querySelector('.display');
+
+//Allows for the display of any number. A number button must be clicked before operand/clear/equate buttons are usable
+numSelector.forEach(event => event.addEventListener('click', event => {
+    //Adds event target's inner HTML to the display
+       displaySelector.innerHTML += event.target.innerHTML;
+       let firstNum;
+       //collects operand
+       let sym = opSelector.forEach(event => event.addEventListener('click', event => {
+        firstNum = displaySelector.innerHTML;
+           clear();
+           return event.target.innerHTML;
+       }))
 
 
 
-buttonSelector.forEach(item => item.addEventListener('click', (event) => {
-    numberSelector.innerHTML += event.target.innerHTML;
-    console.log(event.target.innerHTML);
+    //    console.log(operate(sym,firstNum,secondNum));
+
+       //collect/listen to the second number and store it
+
+
+
+
+
+
 }))
+
