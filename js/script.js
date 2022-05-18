@@ -53,6 +53,8 @@ const clrSelector = document.querySelector('.clr');
 const displaySelector = document.querySelector('.display');
 const equalSelector = document.querySelector('.equal');
 const displayOP = document.querySelector('.displayOP');
+const backSpaceSelector = document.querySelector('.backspace');
+const decimalSelector = document.querySelector('.decimal');
 
 // Algorithm: Receive first input from the clickable buttons/Keyboard
 // Get operator input
@@ -63,32 +65,48 @@ const displayOP = document.querySelector('.displayOP');
 
 let numberArray = [];
 let operatorArray = [];
+const decimalReg = /./;
 
 
 //Receive first input
 // forEach method is applied to add eventListeners to nodelist
 
-document.addEventListener('keydown', keydown);
-
+// document.addEventListener('keydown', keydown);
+backSpaceSelector.addEventListener('click', backspace);
+decimalSelector.addEventListener('click', clicking);
 numSelector.forEach(number => number.addEventListener('click', clicking));
 
 
-function keydown(event){
-    if (operatorArray.length && displaySelector.innerHTML == numberArray[numberArray.length - 1]) {
+function backspace(event){
+    if(displaySelector.innerHTML.length == 1){
         clearDisplay();
-        numberArray.push(0);
     }
-    displaySelector.innerHTML += event.key;
+    if(displaySelector.innerHTML != ''){
+        let remainder = +displaySelector.innerHTML % 10;
+        displaySelector.innerHTML = ((displaySelector.innerHTML-remainder)/10);
+    }
+    }
 
-}
+// function keydown(event){
+//     regEx = "/[0123456789-+]/g";
+//     if (operatorArray.length && displaySelector.innerHTML == numberArray[numberArray.length - 1]) {
+//         clearDisplay();
+//         numberArray.push(0);
+//     }
+//         displaySelector.innerHTML += event.key;
+    
+// }
 
 // Click Function
-//After clicking on an Operator, the number display will stay the same until clicking another number, it checks to see if the display is the same as the number pushed, 
+//After clicking on an Operator, the number display will not change until clicking another number, it checks to see if the display is the same as the number pushed, 
 //that way it clears it once another number is inputted rather than everytime it is clicked
 function clicking(event) {
     if (operatorArray.length && displaySelector.innerHTML == numberArray[numberArray.length - 1]) {
         clearDisplay();
         numberArray.push(0);
+    }
+    if(decimalReg.test(displaySelector.innerHTML)){
+        decimalSelector.removeEventListener('click',clicking);
     }
     displaySelector.innerHTML += event.target.innerHTML;
 }
@@ -96,6 +114,7 @@ function clicking(event) {
 
 //Operator listener, pushes first number into array
 opSelector.forEach(operator => operator.addEventListener('click', event => {
+    decimalSelector.addEventListener('click', clicking);
     numberArray.push(displaySelector.innerHTML);
 
     operator = operatorArray[operatorArray.length - 1];
