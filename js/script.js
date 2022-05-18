@@ -68,12 +68,12 @@ let operatorArray = [];
 //Receive first input
 // forEach method is applied to add eventListeners to nodelist
 
-document.addEventListener('keydown', keyown);
+document.addEventListener('keydown', keydown);
 
 numSelector.forEach(number => number.addEventListener('click', clicking));
 
 
-function keyown(event){
+function keydown(event){
     if (operatorArray.length && displaySelector.innerHTML == numberArray[numberArray.length - 1]) {
         clearDisplay();
         numberArray.push(0);
@@ -97,6 +97,15 @@ function clicking(event) {
 //Operator listener, pushes first number into array
 opSelector.forEach(operator => operator.addEventListener('click', event => {
     numberArray.push(displaySelector.innerHTML);
+
+    operator = operatorArray[operatorArray.length - 1];
+    firstNumber = numberArray[numberArray.length - 3];
+    secondNumber = numberArray[numberArray.length - 1];
+    if(numberArray.length > 2 && operatorArray.length >= 1){
+        displaySelector.innerHTML = operate(operator, firstNumber, secondNumber);
+        numberArray.push(displaySelector.innerHTML);
+
+    }
     operatorArray.push(event.target.innerHTML);
 }));
 
@@ -109,6 +118,14 @@ opSelector.forEach(operator => operator.addEventListener('keypress', event => {
 
 //firstNumber assigns latest firstNumber, secondNumber assigns number after 0
 equalSelector.addEventListener('click', event => {
+    numberArray.push(displaySelector.innerHTML);
+    operator = operatorArray[operatorArray.length - 1];
+    firstNumber = numberArray[numberArray.length - 3];
+    secondNumber = numberArray[numberArray.length - 1];
+    displaySelector.innerHTML = operate(operator, firstNumber, secondNumber);
+})
+
+equalSelector.addEventListener('keypress', event => {
     numberArray.push(displaySelector.innerHTML);
     operator = operatorArray[operatorArray.length - 1];
     firstNumber = numberArray[numberArray.length - 3];
