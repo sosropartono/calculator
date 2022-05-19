@@ -1,18 +1,71 @@
-div{
+
+.button{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 3px;
+    padding: 0;
+    border-color: black;
+
+}
+
+p{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    text-align: center;
 }
 
 body{
     display: flex;
-    justify-content: center;
-    align-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     height: 100vh;
+    background-color: aliceblue;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 
 .calcContainer{
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
+
+}
+div.calcContainer{
+    height: 500px;
+    width: 300px;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numberDisplay{
+    width: 172px;
+    height: 100px;
+
+}
+
+
+.something{
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.button.clr{
+    width: 85px;
+    background-color: lightgoldenrodyellow;
+}
+
+.button.op{
+    background-color: rgb(186, 252, 252);
+}
+
+.button.equal{
+    background-color: rgba(26, 229, 15, 0.543);
+}
+
+.button.num{
+    background-color: rgba(255, 160, 122, 0.799);
 }

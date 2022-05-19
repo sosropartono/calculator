@@ -11,6 +11,9 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if(b == 0){
+        return "Please dont break my calculator!";
+    }
     return +a / +b;
 }
 
@@ -51,6 +54,7 @@ const numSelector = document.querySelectorAll('.num');
 const opSelector = document.querySelectorAll('.op');
 const clrSelector = document.querySelector('.clr');
 const displaySelector = document.querySelector('.display');
+const opDisplaySelector = document.querySelector('.opDisplay');
 const equalSelector = document.querySelector('.equal');
 const displayOP = document.querySelector('.displayOP');
 const backSpaceSelector = document.querySelector('.backspace');
@@ -69,7 +73,7 @@ const decimalReg = /./;
 
 
 //Receive first input
-// forEach method is applied to add eventListeners to nodelist
+// forEach method is awlied to add eventListeners to nodelist
 
 // document.addEventListener('keydown', keydown);
 backSpaceSelector.addEventListener('click', backspace);
@@ -126,13 +130,16 @@ opSelector.forEach(operator => operator.addEventListener('click', event => {
 
     }
     operatorArray.push(event.target.innerHTML);
+    opDisplaySelector.innerHTML = `${numberArray[numberArray.length - 1]} ${operatorArray[operatorArray.length - 1]}`;
+    
+
 }));
 
 //Keyboard listener
-opSelector.forEach(operator => operator.addEventListener('keypress', event => {
-    numberArray.push(displaySelector.innerHTML);
-    operatorArray.push(event.target.innerHTML);
-}))
+// opSelector.forEach(operator => operator.addEventListener('keypress', event => {
+//     numberArray.push(displaySelector.innerHTML);
+//     operatorArray.push(event.target.innerHTML);
+// }))
 
 
 //firstNumber assigns latest firstNumber, secondNumber assigns number after 0
@@ -142,15 +149,18 @@ equalSelector.addEventListener('click', event => {
     firstNumber = numberArray[numberArray.length - 3];
     secondNumber = numberArray[numberArray.length - 1];
     displaySelector.innerHTML = operate(operator, firstNumber, secondNumber);
+    opDisplaySelector.innerHTML = '';
 })
 
-equalSelector.addEventListener('keypress', event => {
-    numberArray.push(displaySelector.innerHTML);
-    operator = operatorArray[operatorArray.length - 1];
-    firstNumber = numberArray[numberArray.length - 3];
-    secondNumber = numberArray[numberArray.length - 1];
-    displaySelector.innerHTML = operate(operator, firstNumber, secondNumber);
-})
+
+// equalSelector.addEventListener('keypress', event => {
+//     numberArray.push(displaySelector.innerHTML);
+//     operator = operatorArray[operatorArray.length - 1];
+//     firstNumber = numberArray[numberArray.length - 3];
+//     secondNumber = numberArray[numberArray.length - 1];
+//     displaySelector.innerHTML = operate(operator, firstNumber, secondNumber);
+// })
+
 
 //Clear button changes display innerHTML to empty string
 clrSelector.addEventListener('click', clearAll);
@@ -158,6 +168,7 @@ clrSelector.addEventListener('click', clearAll);
 //Clear both display and arrays function
 function clearAll() {
     displaySelector.innerHTML = '';
+    opDisplaySelector.innerHTML = '';
     numberArray = [];
     operatorArray = [];
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,35 +8,58 @@
     <title>calculator</title>
     <link rel="stylesheet" href="css/stylesheet.css">
 </head>
-<body>
-<div class="calcContainer">
-    <div>
-        <p class="display" type="number"></p>
-    </div>
-    <!--Numbers-->
-    <div>
-        <button class="button num">0</button>
-        <button class="button num">1</button>
-        <button class="button num">2</button>
-        <button class="button num">3</button>
-        <button class="button num">4</button>
-        <button class="button num">5</button>
-        <button class="button num">6</button>
-        <button class="button num">7</button>
-        <button class="button num">8</button>
-        <button class="button num">9</button>
-        <button class="button decimal">.</button>
-        <button class="button plus op">+</button>
-        <button class="button minus op">-</button>
-        <button class="button divide op">/</button>
-        <button class="button multiply op">*</button>
-        <button class="button equal">=</button>
-        <button class="button clr">clr</button>
-        <button class="button backspace"></button>
-        <p class="displayOP"></p>
-    </div>
 
-</div>
+<body>
+    <div class="calcContainer">
+        <div class="numberDisplay">
+            <p class="opDisplay"></p>
+            <p class="display" type="number"></p>
+        </div>
+        <!--Numbers-->
+        <div>
+            <div class="something">
+                <button class="button clr">clr</button>
+                <button class="button clr backspace">←</button>
+            </div>
+            <div>
+                <button class="button num">7</button>
+                <button class="button num">8</button>
+                <button class="button num">9</button>
+                <button class="button divide op">/</button>
+            </div>
+
+            <div>
+                <button class="button num">4</button>
+                <button class="button num">5</button>
+                <button class="button num">6</button>
+                <button class="button multiply op">*</button>
+            </div>
+
+            <div>
+                <button class="button num">1</button>
+                <button class="button num">2</button>
+                <button class="button num">3</button>
+                <button class="button minus op">-</button>
+            </div>
+
+
+            <div>
+                <button class="button decimal">.</button>
+                <button class="button num">0</button>
+                <button class="button equal">=</button>
+                <button class="button plus op">+</button>
+            </div>
+
+
+
+            <p class="displayOP"></p>
+        </div>
+
+    </div>
+    <div class="footer">Copyright © 2022 sosropartono
+        <a href="https://github.com/sosropartono"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="15px" alt=""></a>
+    </div>
     <script src="js/script.js"></script>
 </body>
+
 </html>
